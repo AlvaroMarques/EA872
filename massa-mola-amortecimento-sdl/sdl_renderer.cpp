@@ -53,12 +53,12 @@ int SDL_System_Renderer::DrawFinal(int pixel_pos){
 		}	
 	}
 	this->block_view.y = pixel_pos;
-	SDL_SetRenderDrawColor(this->renderer, 0, 0, 0, 255);
+	SDL_SetRenderDrawColor(this->renderer, 0, 255, 0, 255);
 	SDL_RenderClear(this->renderer);
 	SDL_SetRenderDrawColor(this->renderer, 255, 255, 255, 255);
 	SDL_RenderFillRect(this->renderer, &(this->block_view));
 	SDL_RenderPresent(this->renderer);
-	SDL_Delay(2);
+	SDL_Delay(10);
 	return 0;
 }
 

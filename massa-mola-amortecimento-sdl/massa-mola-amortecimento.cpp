@@ -88,8 +88,9 @@ void System::iterate(float t_size){
 	float c = b->get_c();
 	float vel = b->get_vel();
 	float m = b->get_mass();
+	float key_force = (this->sdl_keyboard_handler->HandleForceResponse());
 
-	b->set_aceleration((-k*x - c*vel)/m + (this->sdl_keyboard_handler->HandleForceResponse()/m));
+	b->set_aceleration((-k*x - c*vel)/m + key_force/m);
 
 	b->set_vel(vel + b->get_aceleration() * t_size);
 	b->set_x(x + b->get_vel() * t_size);
@@ -104,7 +105,7 @@ void System::simulate(int iter){
 	float m = b->get_mass();
 	float a = 0;
 	while (1){
-		this->iterate(.01);
+		this->iterate(.1);
 		std::cout<<this->p->calculate_pixel()<<std::endl;
 		
 		if(this->sdl_renderer->DrawFinal(this->p->calculate_pixel()) == -1){ 
